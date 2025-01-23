@@ -44,9 +44,61 @@ This is a **Copier template** for creating Python packages with best practices, 
    - **Project Name**: The name of your project (e.g., `my-awesome-project`).
    - **Module Name**: The Python module name (e.g., `my_awesome_project`).
    - **Author Name**: Your GitHub name or organization.
-   - **Author Email**: Your email address that will be published on pypi.
+   - **Author Email**: Your email address that will be published on PyPI.
    - **Python Version**: The Python version your project will use (e.g., `3.10`).
    - **License**: The license for your project (e.g., `MIT`).
+
+
+## Initial Configuration
+
+Before using the workflows, you need to configure the following **GitHub Secrets** and configure services:
+
+### PyPI API Token
+   - This token is used to upload your package to PyPI.
+   - Steps to create and configure the token:
+     1. Go to [PyPI](https://pypi.org/) and log in to your account.
+     2. Navigate to **Account Settings** > **API Tokens**.
+     3. Click **Add API Token** and create a new token with the scope `Entire account` (or restrict it to the specific project).
+     4. Copy the token.
+     5. Go to your GitHub repository's **Settings** > **Secrets and variables** > **Actions**.
+     6. Click **New repository secret**.
+     7. Set the **Name** to `PYPI_API_TOKEN` and paste the token as the **Value**.
+     8. Click **Add secret**.
+
+### GitHub Token
+   - This token is used to create GitHub releases and upload assets.
+   - Steps to configure the token:
+     1. Go to your GitHub repository's **Settings** > **Secrets and variables** > **Actions**.
+     2. Click **New repository secret**.
+     3. Set the **Name** to `GITHUB_TOKEN`.
+     4. The **Value** will be automatically populated by GitHub (no need to manually create a token).
+     5. Click **Add secret**.
+
+### Enable GitHub Pages
+   - GitHub Pages is used to host your project's documentation.
+   - Steps to enable GitHub Pages:
+     1. Go to your GitHub repository's **Settings** > **Pages**.
+     2. Under **Source**, select the `gh-pages` branch and `/ (root)` folder.
+     3. Click **Save**.
+     4. Wait a few minutes for GitHub to build and deploy your documentation.
+     5. Access your documentation at `https://<your-username>.github.io/<your-repo-name>/`.
+
+### Check Package Name Availability on PyPI
+   - Before releasing your package, ensure the name is available on PyPI.
+   - Steps to check availability:
+     1. Go to [PyPI](https://pypi.org/) and search for your package name.
+     2. If the name is already taken, choose a different name and update your `pyproject.toml` file:
+        ```toml
+        [project]
+        name = "your-new-package-name"
+        ```
+     3. Re-run the Copier template to update the project configuration if necessary.
+
+### Optional: Test PyPI API Token
+   - If you want to test your package uploads on [Test PyPI](https://test.pypi.org/), create a separate API token for Test PyPI.
+   - Follow the same steps as for the PyPI API token, but use the **Test PyPI** website.
+   - Add the token as a secret named `TEST_PYPI_API_TOKEN`.
+
 
 ## Standard Operating Procedure (SOP) for Releasing a Python Package
 
@@ -139,4 +191,7 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 - [GitHub Actions](https://github.com/features/actions) for enabling seamless CI/CD.
 - [Sphinx](https://www.sphinx-doc.org/) for making documentation easy.
 
-Happy coding! 🚀
+
+
+
+
