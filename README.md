@@ -1,5 +1,3 @@
-## README.md
-
 # Python Package Template
 
 [![Copier](https://img.shields.io/badge/made%20with-copier-blue)](https://copier.readthedocs.io/)
