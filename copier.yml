@@ -1,0 +1,42 @@
+# copier.yml
+project_name:
+  type: str
+  help: What is the name of your project? (e.g., my-awesome-project)
+
+module_name:
+  type: str
+  help: What is the Python module name? (e.g., my_awesome_project)
+
+author_name:
+  type: str
+  help: What is your GitHub username? (e.g., johndoe)
+
+author_email:
+  type: str
+  help: What is your email? (e.g., john.doe@example.com)
+
+project_description:
+  type: str
+  help: Provide a short description of your project.
+
+license:
+  type: str
+  choices:
+    - MIT
+    - Apache-2.0
+    - GPL-3.0
+  default: MIT
+  help: Choose a license for your project.
+
+python_version:
+  type: str
+  default: "3.10"
+  help: Which Python version will this project use?
+
+ci_provider:
+  type: str
+  choices:
+    - GitHub Actions
+    - None
+  default: GitHub Actions
+  help: Which CI provider do you want to use?
