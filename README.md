@@ -97,12 +97,26 @@ No need to manually create the `GITHUB_TOKEN`. The `secrets.GITHUB_TOKEN` will b
 
 ### Enable GitHub Pages
 
-   - GitHub Pages is used to host your project's documentation.
-   - Steps to enable GitHub Pages:
-     1. Go to your GitHub repository's **Settings** > **Pages**.
-     2. Under **Source**, select **GitHub Actions**.
-     3. Trigger GitHub to build and deploy your documentation.
-     4. Access your documentation at `https://<your-username>.github.io/<your-repo-name>/`.
+GitHub Pages is used to host your project's documentation.
+
+After the **documentation.yml** workflow runs for the first time, follow these steps to enable GitHub Pages:
+
+1. Wait for the Workflow to Complete:
+   - The workflow will create a `gh-pages` branch with your documentation.
+
+2. Configure GitHub Pages:
+   - Go to your GitHub repository's **Settings** > **Pages**.
+   - Under **Source**, select the `gh-pages` branch and the `/ (root)` folder.
+   - Click **Save**.
+
+3. Access Your Documentation:
+   - After a few minutes, your documentation will be available at:
+     ```
+     https://<your-username>.github.io/<your-repo-name>/
+     ```
+
+4. **Optional: Set a Custom Domain**:
+   - If you have a custom domain, you can configure it under the **Custom domain** section in the GitHub Pages settings.
 
 
 ## Standard Operating Procedure (SOP) for Releasing a Python Package
