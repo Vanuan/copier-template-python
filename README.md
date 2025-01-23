@@ -51,7 +51,18 @@ This is a **Copier template** for creating Python packages with best practices, 
 
 ## Initial Configuration
 
-Before using the workflows, you need to configure the following **GitHub Secrets** and configure services:
+Before using the workflows, you need to configure **GitHub** and **PyPI**:
+
+### Check Package Name Availability on PyPI
+   - Before releasing your package, ensure the name is available on PyPI.
+   - Steps to check availability:
+     1. Go to [PyPI](https://pypi.org/) and search for your package name.
+     2. If the name is already taken, choose a different name and update your `pyproject.toml` file:
+        ```toml
+        [project]
+        name = "your-new-package-name"
+        ```
+     3. Re-run the Copier template to update the project configuration if necessary.
 
 ### PyPI API Token
    - This token is used to upload your package to PyPI.
@@ -65,39 +76,23 @@ Before using the workflows, you need to configure the following **GitHub Secrets
      7. Set the **Name** to `PYPI_API_TOKEN` and paste the token as the **Value**.
      8. Click **Add secret**.
 
-### GitHub Token
-   - This token is used to create GitHub releases and upload assets.
-   - Steps to configure the token:
-     1. Go to your GitHub repository's **Settings** > **Secrets and variables** > **Actions**.
-     2. Click **New repository secret**.
-     3. Set the **Name** to `GITHUB_TOKEN`.
-     4. The **Value** will be automatically populated by GitHub (no need to manually create a token).
-     5. Click **Add secret**.
-
-### Enable GitHub Pages
-   - GitHub Pages is used to host your project's documentation.
-   - Steps to enable GitHub Pages:
-     1. Go to your GitHub repository's **Settings** > **Pages**.
-     2. Under **Source**, select the `gh-pages` branch and `/ (root)` folder.
-     3. Click **Save**.
-     4. Wait a few minutes for GitHub to build and deploy your documentation.
-     5. Access your documentation at `https://<your-username>.github.io/<your-repo-name>/`.
-
-### Check Package Name Availability on PyPI
-   - Before releasing your package, ensure the name is available on PyPI.
-   - Steps to check availability:
-     1. Go to [PyPI](https://pypi.org/) and search for your package name.
-     2. If the name is already taken, choose a different name and update your `pyproject.toml` file:
-        ```toml
-        [project]
-        name = "your-new-package-name"
-        ```
-     3. Re-run the Copier template to update the project configuration if necessary.
-
 ### Optional: Test PyPI API Token
    - If you want to test your package uploads on [Test PyPI](https://test.pypi.org/), create a separate API token for Test PyPI.
    - Follow the same steps as for the PyPI API token, but use the **Test PyPI** website.
    - Add the token as a secret named `TEST_PYPI_API_TOKEN`.
+
+### GitHub Token
+
+No need to manually create the `GITHUB_TOKEN`. The `secrets.GITHUB_TOKEN` will be automatically provided by GitHub to workflows.
+
+### Enable GitHub Pages
+
+   - GitHub Pages is used to host your project's documentation.
+   - Steps to enable GitHub Pages:
+     1. Go to your GitHub repository's **Settings** > **Pages**.
+     2. Under **Source**, select **GitHub Actions**.
+     3. Trigger GitHub to build and deploy your documentation.
+     4. Access your documentation at `https://<your-username>.github.io/<your-repo-name>/`.
 
 
 ## Standard Operating Procedure (SOP) for Releasing a Python Package
