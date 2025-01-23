@@ -65,16 +65,26 @@ Before using the workflows, you need to configure **GitHub** and **PyPI**:
      3. Re-run the Copier template to update the project configuration if necessary.
 
 ### PyPI API Token
+
    - This token is used to upload your package to PyPI.
-   - Steps to create and configure the token:
+   - Initial setup:
      1. Go to [PyPI](https://pypi.org/) and log in to your account.
      2. Navigate to **Account Settings** > **API Tokens**.
-     3. Click **Add API Token** and create a new token with the scope `Entire account` (or restrict it to the specific project).
+     3. Click **Add API Token** and create a new token with the scope `Entire account`.
      4. Copy the token.
      5. Go to your GitHub repository's **Settings** > **Secrets and variables** > **Actions**.
      6. Click **New repository secret**.
      7. Set the **Name** to `PYPI_API_TOKEN` and paste the token as the **Value**.
      8. Click **Add secret**.
+
+   - After first release:
+
+     - Once your project is created on PyPI, create a **project-specific API token**:
+       1. Go to [PyPI](https://pypi.org/) and log in to your account.
+       2. Navigate to **Account Settings** > **API Tokens**.
+       3. Click **Add API Token** and create a new token with the scope restricted to your project.
+       4. Update the `PYPI_API_TOKEN` secret in your GitHub repository with the new token.
+
 
 ### Optional: Test PyPI API Token
    - If you want to test your package uploads on [Test PyPI](https://test.pypi.org/), create a separate API token for Test PyPI.
@@ -185,8 +195,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 - [Copier](https://copier.readthedocs.io/) for providing an excellent templating tool.
 - [GitHub Actions](https://github.com/features/actions) for enabling seamless CI/CD.
 - [Sphinx](https://www.sphinx-doc.org/) for making documentation easy.
-
-
-
-
 
